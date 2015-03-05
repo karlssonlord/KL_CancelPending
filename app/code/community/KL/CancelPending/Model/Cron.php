@@ -44,7 +44,10 @@ class KL_CancelPending_Model_Cron extends Mage_Core_Model_Abstract
          * Fetch pending orders
          */
         $orderCollection
-            ->addFieldToFilter('state', 'pending_payment')
+            ->addFieldToFilter(
+                array('status', 'state'),
+                array('pending', Mage_Sales_Model_Order::STATE_PENDING_PAYMENT)
+            )
             ->addFieldToFilter(
                 'created_at',
                 array(
@@ -88,7 +91,9 @@ class KL_CancelPending_Model_Cron extends Mage_Core_Model_Abstract
             /**
              * Add notice to the logfile
              */
-            Mage::helper('cancelpending')->logMessage('Cancelled order #' . $order->getId() . ' since time limit of ' . $timeLimit . ' minutes was reached');
+            Mage::helper('cancelpending')->logMessage(
+                'Cancelled order #' . $order->getId() . ' since time limit of ' . $timeLimit . ' minutes was reached'
+            );
         }
 
     }
