@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <KL_CancelPending>
+            <active>true</active>
+            <codePool>community</codePool>
+        </KL_CancelPending>
+    </modules>
+</config>

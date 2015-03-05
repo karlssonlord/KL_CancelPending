@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <KL_CancelPending>
+            <version>0.0.1</version>
+        </KL_CancelPending>
+    </modules>
+    <global>
+        <helpers>
+            <cancelpending>
+                <class>KL_CancelPending_Helper</class>
+            </cancelpending>
+        </helpers>
+        <models>
+            <cancelpending>
+                <class>KL_CancelPending_Model</class>
+            </cancelpending>
+        </models>
+    </global>
+    <default>
+        <kl_cancelpending>
+            <kl_cancelpending_general>
+                <enabled>0</enabled>
+                <waithours>5</waithours>
+            </kl_cancelpending_general>
+        </kl_cancelpending>
+    </default>
+    <crontab>
+        <jobs>
+            <kl_cancelpending_updateorders>
+                <schedule>
+                    <cron_expr>*/15 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>cancelpending/cron::run</model>
+                </run>
+            </kl_cancelpending_updateorders>
+        </jobs>
+    </crontab>
+</config> 
