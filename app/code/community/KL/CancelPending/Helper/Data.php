@@ -57,4 +57,18 @@ class KL_CancelPending_Helper_Data extends Mage_Core_Helper_Abstract
 
         return intval($timeLimit) * 60;
     }
+
+    /**
+     * Log custom message to our log
+     *
+     * @param $message
+     *
+     * @return bool
+     */
+    public function logMessage($message)
+    {
+        Mage::log($message, null, 'kl_cancelpending.log', true);
+
+        return true;
+    }
 }
