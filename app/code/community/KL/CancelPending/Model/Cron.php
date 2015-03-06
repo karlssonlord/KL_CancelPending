@@ -85,14 +85,14 @@ class KL_CancelPending_Model_Cron extends Mage_Core_Model_Abstract
              * Add comment to order
              */
             $order
-                ->addStatusToHistory($order->getStatus(), 'Order cancelled by KL_CancelPending: ', false)
+                ->addStatusToHistory($order->getStatus(), 'Order cancelled by KL_CancelPending', false)
                 ->save();
 
             /**
              * Add notice to the logfile
              */
             Mage::helper('cancelpending')->logMessage(
-                'Cancelled order #' . $order->getId() . ' since time limit of ' . $timeLimit . ' minutes was reached'
+                'Cancelled order ID #' . $order->getId() . ' since time limit of ' . $timeLimit . ' minutes was reached'
             );
         }
 
